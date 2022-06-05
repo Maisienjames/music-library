@@ -1,0 +1,23 @@
+{
+  "name": "music-library",
+  "version": "1.0.0",
+  "description": "MUSIC LIBRARY API Creating a music library API to learn how to perform CRUD operations on a database.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maisienjames/music-library.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maisienjames/music-library/issues"
+  },
+  "homepage": "https://github.com/Maisienjames/music-library#readme",
+  "devDependencies": {
+    "eslint": "^8.17.0"
+  }
+}
