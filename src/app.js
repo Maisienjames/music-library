@@ -1,6 +1,6 @@
 const express = require('express');
-const artistRouter = require('./routers/artist');
-const albumRouter = require('./routers/album');
+const artistRouter = require('./routes/artist');
+const albumRouter = require('./routes/album');
 const getDb = require('../src/services/db');
 
 const app = express();

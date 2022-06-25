@@ -3,10 +3,10 @@ const getDb = require('../services/db');
 exports.create = async (req, res) => {
     const db = await getDb();
     const { name, genre, year } = req.body;
-    const artistId = req.params.artistId;
+    const { artistId } = req.params;
 
     try {
-    await db.query(`INSERT INTO Album (name, year, genre) VALUES (?, ?)`, [
+    await db.query(`INSERT INTO Album (name, year, genre, artistId) VALUES (?, ?, ?, ?)`, [
         name,
         genre,
         year,

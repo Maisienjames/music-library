@@ -5,28 +5,38 @@ const app = require('../src/app');
 
 describe('create album', () => {
     let db;
-    let artists;
+    let albums;
 
-    beforeEach(async () => (db = await getDb()))
+    beforeEach(async () => {
+      db = await getDb();
+
+     [albums] = await db.query('SELECT * from Album');
+  });
+
     afterEach(async () => {
       await db.query('DELETE FROM Album');
       await db.close();
     });
  
-    describe('/artist/:artistId/album', () => {
+    describe('/album', () => {
       describe('POST', () => {
         it('creates a new album in the database', async () => {
+          if(albums[0]) { 
           const res = await request(app).post('/artist/:artistId/album').send({
             name: 'Exmilitary',
+            genre: 'Hip Hop',
             year: '2011',
           });
  
           expect(res.status).to.equal(201);
-          const [[albumEntries]] = await db.query(`SELECT * FROM Album WHERE name = 'Exmilitary'`)
+          const [[albumEntries]] = await db.query(`SELECT * FROM Album WHERE name = 'Exmilitary'`);
  
           expect(albumEntries.name).to.equal('Exmilitary');
+          expect(albumEntries.genre).to.equal('Hip Hop')
           expect(albumEntries.year).to.equal('2011');
-        });
+          expect(albumEntries.artistId).to.equal(1);
+        };
+      });
     });
   });
 });
